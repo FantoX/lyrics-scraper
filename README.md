@@ -193,7 +193,7 @@ main();
 
 # Contributions
 
-- Made by [FantoX](https://github.com/FantoX001)
+- Made by [FantoX](https://github.com/FantoX)
 - I don't have any other contributors in this project yet. Feel free to contribute.
 
 <br />

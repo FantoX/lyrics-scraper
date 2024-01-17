@@ -1,4 +1,3 @@
-
 <h1 align="center"> <a href="https://github.com/FantoX001/lyrics-scraper">@fantox01/lyrics-scraper </a>
 </h1>
 
@@ -23,9 +22,20 @@
 <br>
 
 # Description:
-- This is a Scraper which can scrap and give you lyrics of any song that's available on [Genius Offitial Site](https://genius.com/). 
+
+- This is a Scraper which can scrap and give you lyrics of any song that's available on [Genius Offitial Site](https://genius.com/).
 - This can return both album thumbnail and lyrics if they are available through thw power of web scraping.
 - Scraping an website is not always allowed by the website owners. This project is made for educational purposes only.
+
+<br>
+
+## Whats New on version 3.0.1
+
+- Added ES6 **Javascript** and **Typescript** Support
+- Updated code according to updated Genius Lyrics page HTML
+- Added JS Doc for more clear implementation
+- Added support for promises too
+- Removed backwards compatibility for older version of this package (Use `npm i @fantox01/lyrics-scraper@latest` to update)
 
 <br>
 
@@ -42,163 +52,155 @@ yarn add @fantox01/lyrics-scraper
 <br>
 
 ## Usage:
-- Make sure to always use an asynchronous function to fetch the data.
+
+- For ES5 Javascript
 
 ```js
-const lyrics = require("@fantox01/lyrics-scraper");
+const getLyrics = require("@fantox01/lyrics-scraper");
 
-async function x() {
-  const data = await lyrics("despacito");
-  // All data
+const main = async () => {
+  const data = await getLyrics("Heat Waves");
   console.log(data);
-
-  // Specific data usage
-  console.log(data.thumbnail);
-  console.log(data.lyrics);
-}
-
-x();
-  
+};
+main();
 ```
 
 <br>
+
+- For ES6 Javascript / Typescript
+
+```js
+import { getLyrics } from "@fantox01/lyrics-scraper";
+
+const main = async () => {
+  const data = await getLyrics("Heat Waves");
+  console.log(data);
+};
+main();
+```
 
 ## Output:
 
 - It will automatically format the lyrics and add new lines ("\n").
-- Use `console.log(data.lyrics)` to for only lyrics and `console.log(data.thumbnail);` to get only thumlnail.
+- Use `console.log(data.lyrics)` to for only lyrics and `console.log(data.thumbnail)` to get only thumbnail.
 
 ```js
 {
-  thumbnail: 'https://images.genius.com/542c8a2c01584e9a8e58934dff54a654.300x300x1.jpg',
-  lyrics: '[Letra de "Despacito (Remix)" ft. Justin Bieber]\n' +
+  status: 200,
+  url: 'https://genius.com/Glass-animals-heat-waves-lyrics',
+  album: 'Heat Waves by Glass Animals',
+  artist: 'Glass Animals',
+  release_date: 'June 29, 2020',
+  thumbnail: 'https://images.genius.com/25ffad8f4a6804e3efc869253f030baf.1000x1000x1.jpg',
+  lyrics: '[Intro]\n' +
+    '(Last night, all I think about is you)\n' +
+    "(Don't stop, baby, you can walk through)\n" +
+    "(Don't want, baby, think about you)\n" +
+    "(You know that I'm never gonna lose)\n" +
+    "Road shimmer wigglin' the vision\n" +
+    "Heat, heat waves, I'm swimmin' in a mirror\n" +
+    "Road shimmer wigglin' the vision\n" +
+    "Heat, heat waves, I'm swimmin' in a—\n" +
     '\n' +
-    '[Intro: Justin Bieber]\n' +
-    "Comin' over in my direction\n" +
-    "So thankful for that, it's such a blessin', yeah\n" +
-    'Turn every situation into heaven, yeah\n' +
-    'Oh-oh, you are\n' +
-    'My sunrise on the darkest day\n' +
-    "Got me feelin' some kind of way\n" +
-    'Make me wanna savor every moment slowly, slowly\n' +
-    'You fit me tailor-made, love how you put it on\n' +
-    'Got the only key, know how to turn it on\n' +
-    'The way you nibble on my ear, the only words I wanna hear\n' +
-    'Baby, take it slow so we can last long\n' +
+    '[Chorus]\n' +
+    'Sometimes, all I think about is you\n' +
+    'Late nights in the middle of June\n' +
+    "Heat waves been fakin' me out\n" +
+    "Can't make you happier now\n" +
+    'Sometimes, all I think about is you\n' +
+    'Late nights in the middle of June\n' +
+    "Heat waves been fakin' me out\n" +
+    "Can't make you happier now\n" +
     '\n' +
-    '[Verso 1: Luis Fonsi & Daddy Yankee]\n' +
-    '¡Oh! Tú, tú eres el imán y yo soy el metal\n' +
-    'Me voy acercando y voy armando el plan\n' +
-    'Sólo con pensarlo se acelera el pulso (Oh, yeah)\n' +
-    'Ya, ya me está gustando más de lo normal\n' +
-    'Todos mis sentidos van pidiendo más\n' +
-    'Esto hay que tomarlo sin ningún apuro\n' +
+    '[Verse 1]\n' +
+    "Usually, I put somethin' on TV\n" +
+    'So we never think about you and me\n' +
+    'But today, I see our reflections clearly\n' +
+    "In Hollywood, layin' on the screen\n" +
+    'You just need a better life than this\n' +
+    "You need somethin' I can never give\n" +
+    'Fake water all across the road\n' +
+    "It's gone now, the night has come, but\n" +
     '\n' +
-    '[Coro: Justin Bieber & Luis Fonsi, Daddy Yankee]\n' +
-    'Despacito\n' +
-    'Quiero respirar tu cuello despacito\n' +
-    'Deja que te diga cosas al oído\n' +
-    'Para que te acuerdes si no estás conmigo\n' +
-    'Despacito\n' +
-    'Quiero desnudarte a besos despacito\n' +
-    'Firmo en las paredes de tu laberinto\n' +
-    'Y hacer de tu cuerpo todo un manuscrito\n' +
-    '(Sube, sube, sube\n' +
-    'Sube, sube)\n' +
+    '[Chorus]\n' +
+    'Sometimes, all I think about is you\n' +
+    'Late nights in the middle of June\n' +
+    "Heat waves been fakin' me out\n" +
+    "Can't make you happier now\n" +
     '\n' +
-    '[Post-Coro: Luis Fonsi & Daddy Yankee]\n' +
-    'Quiero ver bailar tu pelo, quiero ser tu ritmo (Woah, woah)\n' +
-    'Que le enseñes a mi boca (Woah, woah)\n' +
-    'Tus lugares favoritos (Favorito, favorito, baby)\n' +
-    'Déjame sobrepasar tus zonas de peligro (Woah, woah)\n' +
-    'Hasta provocar tus gritos (Woah, woah)\n' +
-    'Y que olvides tu apellido\n' +
+    '[Verse 2]\n' +
+    "You can't fight it, you can't breathe\n" +
+    "You say somethin' so lovin', but\n" +
+    'Now I gotta let you go\n' +
+    "You'll be better off in someone new\n" +
+    "I don't wanna be alone\n" +
+    'You know it hurts me too\n' +
+    'You look so broken when you cry\n' +
+    'One more and then I say goodbye\n' +
     '\n' +
-    '[Verso 2: Daddy Yankee]\n' +
-    'Si te pido un beso, ven, dámelo, yo sé que estás pensándolo\n' +
-    'Llevo tiempo intentándolo, mami, esto es dando y dándolo\n' +
-    'Sabes que tu corazón conmigo te hace bom, bom\n' +
-    'Sabes que esa beba está buscando de mi bom, bom\n' +
-    'Ven, prueba de mi boca para ver cómo te sabe\n' +
-    'Quiero, quiero, quiero ver cuánto amor a ti te cabe\n' +
-    'Yo no tengo prisa, yo me quiero dar el viaje\n' +
-    'Empecemos lento, después salvaje\n' +
+    '[Chorus]\n' +
+    'Sometimes, all I think about is you\n' +
+    'Late nights in the middle of June\n' +
+    "Heat waves been fakin' me out\n" +
+    "Can't make you happier now\n" +
+    'Sometimes, all I think about is you\n' +
+    'Late nights in the middle of June\n' +
+    "Heat waves been fakin' me out\n" +
+    "Can't make you happier now\n" +
     '\n' +
-    '[Pre-Coro: Daddy Yankee & Justin Bieber, Daddy Yankee]\n' +
-    'Pasito a pasito, suave suavecito\n' +
-    'Nos vamos pegando, poquito a poquito\n' +
-    'Cuando tú me besas con esa destreza\n' +
-    'Veo que eres malicia con delicadeza\n' +
-    'Pasito a pasito, suave suavecito\n' +
-    'Nos vamos pegando, poquito a poquito\n' +
-    'Y es que esa belleza es un rompecabezas\n' +
-    "Pero pa' montarlo aquí tengo la pieza\n" +
-    '¡Oye!\n' +
+    '[Bridge]\n' +
+    "I just wonder what you're dreamin' of\n" +
+    'When you sleep and smile so comfortable\n' +
+    'I just wish that I could give you that\n' +
+    "That look that's perfectly un-sad\n" +
+    'Sometimes, all I think about is you\n' +
+    'Late nights in the middle of June\n' +
+    "Heat waves been fakin' me out\n" +
+    "Heat waves been fakin' me out\n" +
     '\n' +
-    '[Coro: Justin Bieber & Luis Fonsi, Daddy Yankee]\n' +
-    'Despacito\n' +
-    'Quiero respirar tu cuello despacito\n' +
-    'Deja que te diga cosas al oído\n' +
-    'Para que te acuerdes si no estás conmigo\n' +
-    'Despacito\n' +
-    'Quiero desnudarte a besos despacito\n' +
-    'Firmo en las paredes de tu laberinto\n' +
-    'Y hacer de tu cuerpo todo un manuscrito\n' +
-    '(Sube, sube, sube\n' +
-    'Sube, sube)\n' +
+    '[Chorus]\n' +
+    'Sometimes, all I think about is you\n' +
+    'Late nights in the middle of June\n' +
+    "Heat waves been fakin' me out\n" +
+    "Can't make you happier now\n" +
+    'Sometimes, all I think about is you\n' +
+    'Late nights in the middle of June\n' +
+    "Heat waves been fakin' me out\n" +
+    "Can't make you happier now\n" +
     '\n' +
-    '[Post-Coro: Luis Fonsi & Daddy Yankee]\n' +
-    'Quiero ver bailar tu pelo, quiero ser tu ritmo (Woah, woah)\n' +
-    'Que le enseñes a mi boca (Woah, woah)\n' +
-    'Tus lugares favoritos (Favorito, favorito, baby)\n' +
-    'Déjame sobrepasar tus zonas de peligro (Woah, woah)\n' +
-    'Hasta provocar tus gritos (Woah, woah)\n' +
-    'Y que olvides tu apellido\n' +
-    '\n' +
-    '[Puente: Luis Fonsi]\n' +
-    'Despacito\n' +
-    'This is how we do it down in Puerto Rico\n' +
-    'I just wanna hear you screaming, "¡Ay, bendito!"\n' +
-    'I can move forever cuando esté contigo\n' +
-    '¡Báilalo!\n' +
-    '\n' +
-    '[Outro: Daddy Yankee, Luis Fonsi & Justin Bieber]\n' +
-    'Pasito a pasito, suave suavecito\n' +
-    'Nos vamos pegando, poquito a poquito\n' +
-    'Que le enseñes a mi boca\n' +
-    'Tus lugares favoritos\n' +
-    '(Favorito, favorito, baby)\n' +
-    'Pasito a pasito, suave suavecito\n' +
-    'Nos vamos pegando, poquito a poquito\n' +
-    'Hasta provocar tus gritos (Fonsi)\n' +
-    'Y que olvides tu apellido (DY)\n' +
-    'Despacito'
+    '[Outro]\n' +
+    "Road shimmer wigglin' the vision\n" +
+    "Heat, heat waves, I'm swimmin' in a mirror\n" +
+    "Road shimmer wigglin' the vision\n" +
+    "Heat, heat waves, I'm swimmin' in a mirror"
 }
 ```
 
 <br>
 
-
 # Making of @fantox01/lyrics-scraper
 
 ## How?
-* Using [Axios](https://github.com/axios/axios) and [Cheerio](https://github.com/cheeriojs/cheerio)
-* **Axios -** A promise based HTTP client for the browser and node.js
-* **Cheerio -** A fast, flexible, and elegant library for parsing and manipulating HTML and XML.
+
+- Using [Axios](https://github.com/axios/axios) and [Cheerio](https://github.com/cheeriojs/cheerio)
+- **Axios -** A promise based HTTP client for the browser and node.js
+- **Cheerio -** A fast, flexible, and elegant library for parsing and manipulating HTML and XML.
 
 ## Why?
-* IDK, scraping is fun to me and also legal upto a limited extend as long as you don't misuse it.
-<br />
+
+- IDK, scraping is fun to me and also legal upto a limited extend as long as you don't misuse it.
+  <br />
 
 # Contributions
-* Made by [FantoX](https://github.com/FantoX001)
-* I don't have any other contributors in this project yet. Feel free to contribute.
+
+- Made by [FantoX](https://github.com/FantoX001)
+- I don't have any other contributors in this project yet. Feel free to contribute.
 
 <br />
 
 # Support me
-* Give this project a 🌟 if you like my project.
-* Please follow me on GitHub to get notified about my upcoming projects.
+
+- Give this project a 🌟 if you like my project.
+- Please follow me on GitHub to get notified about my upcoming projects.
 
 <br />
-
